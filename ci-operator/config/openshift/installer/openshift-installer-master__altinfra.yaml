@@ -244,14 +244,13 @@ tests:
     workflow: openshift-e2e-azure
   timeout: 6h0m0s
 - always_run: false
-  as: e2e-azure-ovn-shared-vpc
+  as: e2e-azure-capi-ovn-techpreview
   optional: true
   steps:
     cluster_profile: azure4
     env:
-      FEATURE_GATES: '["ClusterAPIInstall=true"]'
-      FEATURE_SET: CustomNoUpgrade
-    workflow: openshift-e2e-azure-sharednetwork
+      FEATURE_SET: TechPreviewNoUpgrade
+    workflow: openshift-e2e-azure
   timeout: 6h0m0s
 - always_run: false
   as: e2e-gcp-capi-ovn
@@ -473,7 +472,7 @@ tests:
   as: e2e-vsphere-capi-zones
   optional: true
   steps:
-    cluster_profile: vsphere-elastic
+    cluster_profile: vsphere-multizone-2
     env:
       FEATURE_GATES: '["ClusterAPIInstall=true"]'
       FEATURE_SET: CustomNoUpgrade
